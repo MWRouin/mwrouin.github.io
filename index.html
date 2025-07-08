@@ -12,10 +12,9 @@
     :root {
       --bg-color: #121212;
       --card-bg: #1e1e1e;
-      --text-color: #e0e0e0;
+      --text-color: #aaaaaa;
       --accent-color: #4CAF50;
       --accent-hover: #45A049;
-      --note-color: #aaaaaa;
     }
 
     body {
@@ -49,7 +48,7 @@
 
     .note {
       font-size: 0.9rem;
-      color: var(--note-color);
+      color: var(--text-color);
     }
 
     a {
@@ -57,14 +56,16 @@
       margin-top: 1rem;
       padding: 0.5rem 1rem;
       text-decoration: none;
-      color: #fff;
-      background-color: var(--accent-color);
+      color: var(--accent-color);
+      background-color: var(--bg-color);
       border-radius: 4px;
+      box-shadow: 0 0 12px rgba(76,	175,	80, 0.6);
       transition: background-color 0.3s ease;
     }
 
     a:hover {
       background-color: var(--accent-hover);
+      color: var(--bg-color);
     }
   </style>
 </head>
@@ -72,9 +73,18 @@
 <body>
   <main>
     <h1>Redirecting...</h1>
-    <p>You’ll be automatically redirected to the destination page shortly.</p>
-    <p class="note">If it doesn’t happen, please click below:</p>
-    <a href="https://mwrouin.github.io/Portfolio/">Go to Destination</a>
+    <p>You’ll be automatically redirected to the destination page.</p>
   </main>
+  <script>
+    const newContent = 
+    `<h1>Redirecting...</h1>
+    <p>You’ll be automatically redirected to the destination page.</p>
+    <p class="note">If it doesn’t happen, please click below!</p>
+    <a href="https://mwrouin.github.io/Portfolio/">Go to Destination</a>`
+    setTimeout(() => {
+        const mainElement = document.getElementsByTagName('main')[0];
+        mainElement.innerHTML = newContent;
+      }, 3000);
+  </script>
 </body>
 </html>
