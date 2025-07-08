@@ -15,6 +15,7 @@
       --text-color: #aaaaaa;
       --accent-color: #4CAF50;
       --accent-hover: #45A049;
+      --title-color: #4CAF50DD;
     }
 
     body {
@@ -33,13 +34,19 @@
       padding: 2rem;
       max-width: 400px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 12px #00000099;
       border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    main.fade-in {
+      opacity: 1;
     }
 
     h1 {
       margin-top: 0;
-      color: var(--accent-color);
+      color: var(--title-color);
     }
 
     p {
@@ -59,7 +66,7 @@
       color: var(--accent-color);
       background-color: var(--bg-color);
       border-radius: 4px;
-      box-shadow: 0 0 12px rgba(76,	175,	80, 0.6);
+      box-shadow: 0 0 12px #4CAF5099;
       transition: background-color 0.3s ease;
     }
 
@@ -76,15 +83,23 @@
     <p>You’ll be automatically redirected to the destination page.</p>
   </main>
   <script>
-    const newContent = 
+    const mainContentTimeout = 
     `<h1>Redirecting...</h1>
     <p>You’ll be automatically redirected to the destination page.</p>
     <p class="note">If it doesn’t happen, please click below!</p>
     <a href="https://mwrouin.github.io/Portfolio/">Go to Destination</a>`
     setTimeout(() => {
+      const mainElement = document.getElementsByTagName('main')[0];
+      mainElement.classList.add('fade-in');
+      setTimeout(() => {
         const mainElement = document.getElementsByTagName('main')[0];
-        mainElement.innerHTML = newContent;
-      }, 3000);
+        mainElement.classList.remove('fade-in');
+        setTimeout(() => {
+          mainElement.innerHTML = mainContentTimeout;
+          mainElement.classList.add('fade-in');
+        },300)
+      }, 2000);
+    }, 1000);
   </script>
 </body>
 </html>
